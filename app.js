@@ -12,6 +12,13 @@ const rateLimiter = require('express-rate-limit');
 // routes
 const formRouter = require('./routes/formRouter');
 
+// error handlers
+
+// extra packages
+app.use(morgan('tiny'));
+app.use(express.json());
+app.use(cors());
+
 // route usage
 app.use('/api/v1/form', formRouter);
 
