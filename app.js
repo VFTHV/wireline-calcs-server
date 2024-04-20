@@ -13,6 +13,8 @@ const rateLimiter = require('express-rate-limit');
 const formRouter = require('./routes/formRouter');
 
 // error handlers
+const notFoundMiddleWare = require('./middleware/not-found');
+const errorHandlerMiddleware = require('./middleware/error-handler');
 
 // extra packages
 app.use(morgan('tiny'));
@@ -21,6 +23,10 @@ app.use(cors());
 
 // route usage
 app.use('/api/v1/form', formRouter);
+
+// middleware
+app.use(notFoundMiddleWare);
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 3000;
 
