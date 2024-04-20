@@ -1,11 +1,24 @@
-const express = require('express');
+require('dotenv').config();
+require('express-async-errors');
 
+const express = require('express');
 const app = express();
 
-app.get('/', (req, res) => {
-  res.status(200).send('<h1>Server is running</h1>');
-});
+// routes
+const formRouter = require('./routes/formRouter');
 
-app.listen(3000, () => {
-  console.log('Server is listening on port 3000...');
-});
+// route usage
+app.use('/api/v1/form', formRouter);
+
+const port = process.env.PORT || 3000;
+
+const start = async () => {
+  try {
+    console.log(`Server is listening on port ${port}...`);
+    app.listen(3000, () => {});
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+start();
