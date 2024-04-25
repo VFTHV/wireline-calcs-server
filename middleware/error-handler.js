@@ -7,7 +7,6 @@ const errorHandlerMiddleware = (err, req, res, next) => {
     msg: err.message || 'Something went wrong try again later',
   };
 
-  //   return res.status(err.statusCode).json({ msg: err.message })
   // }
 
   if (err.name === 'ValidationError') {
