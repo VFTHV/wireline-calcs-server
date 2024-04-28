@@ -1,19 +1,20 @@
 const sendEmail = require('./sendEmail');
 
 const sendVerificationEmail = async ({
-  name,
+  emailBody,
   email,
   verificationToken,
   origin,
 }) => {
-  const verifyEmail = `${origin}/verify-email?token=${verificationToken}&email=${email}`;
+  const { name, issue, description } = emailBody;
 
-  const message = `<p>Please confirm your email by clicking on the following link: <a href=${verifyEmail}>Verify Email</a></p>`;
+  const line1 = `<h5>Issue:</h5><p>${issue}</p>`;
+  const line2 = `<h5>Description:</h5><p>${description}</p>`;
 
   return sendEmail({
     to: email,
-    subject: 'Email confirmation',
-    html: `<h4>Hello ${name}</h4>${message}`,
+    subject: 'Wireline Calcs form submission',
+    html: `<h4>Name: ${name}</h4>${line1}${line2}`,
   });
 };
 

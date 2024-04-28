@@ -8,7 +8,7 @@ const sendEmail = async ({ to, subject, html }) => {
   const transporter = nodemailer.createTransport(nodemailerConfig);
 
   const info = await transporter.sendMail({
-    from: '"VFTHV" <sdgadmin@gmail.com>', // sender address
+    from: 'Wireline Calcs', // sender address
     to, // list of receivers
     subject, // Subject line
     html,
