@@ -1,5 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
+const sendEmail = require('../utils/sendEmail');
 
 const submitProblem = async (req, res) => {
   const { name, issue, description } = req.body;
@@ -17,6 +18,8 @@ const submitProblem = async (req, res) => {
   if (!name || !issue || !description) {
     throw new CustomError.BadRequestError('Please provide all information');
   }
+
+  await sendEmail({ name, issue, description });
 
   res.status(StatusCodes.OK).json({
     name,
