@@ -12,7 +12,6 @@ const submitProblem = async (req, res) => {
   //     }, delay);
   //   });
   // };
-
   // await wait(2000);
 
   if (!name || !issue || !description) {
