@@ -22,15 +22,7 @@ app.use(express.json());
 app.use(cors());
 
 // route usage
-// form route
-// form route
-// form route
-// form route
-// form route
-// form route
-// form route
-// form route
-// form route
+
 app.use('/api/v1/form', formRouter);
 
 // middleware
